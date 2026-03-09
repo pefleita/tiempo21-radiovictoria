@@ -1,0 +1,54 @@
+/* open-sans.css — Google Fonts: Open Sans (local)
+ *
+ * INSTRUCCIONES DE INSTALACIÓN:
+ * ─────────────────────────────────────────────────────────────────
+ * 1. Descarga la fuente Open Sans desde Google Fonts o google-webfonts-helper:
+ *    https://gwfh.mranftl.com/fonts/open-sans?subsets=latin,latin-ext
+ *
+ * 2. Coloca los archivos .woff2 y .woff en:
+ *    /wp-content/themes/tiempo21-radiovictoria/assets/fonts/
+ *
+ * 3. Reemplaza este archivo con las declaraciones @font-face reales.
+ *
+ * Ejemplo de declaración @font-face:
+ */
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('open-sans-v44-latin-ext-regular.woff2') format('woff2'),
+       url('open-sans-v44-latin-ext-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
+       url('open-sans-v44-latin-ext-600.woff2') format('woff2'),
+       url('open-sans-v44-latin-ext-600.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'),
+       url('open-sans-v44-latin-ext-700.woff2') format('woff2'),
+       url('open-sans-v44-latin-ext-700.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: local('Open Sans ExtraBold'), local('OpenSans-ExtraBold'),
+       url('open-sans-v44-latin-ext-800.woff2') format('woff2'),
+       url('open-sans-v44-latin-ext-800.woff') format('woff');
+}

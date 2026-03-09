@@ -1,0 +1,313 @@
+# Copyright (C) 2024 Tiempo21
+# This file is distributed under the same license as the Tiempo21 theme.
+msgid ""
+msgstr ""
+"Project-Id-Version: Tiempo21 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/tiempo21\n"
+"POT-Creation-Date: 2026-03-03 12:00:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2026-03-03 12:00+00:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: comments.php
+msgid "Comentario"
+msgid_plural "Comentarios"
+msgstr[0] "Comment"
+msgstr[1] "Comments"
+
+#: comments.php
+msgid "Tu comentario está pendiente de moderación."
+msgstr "Your comment is awaiting moderation."
+
+#: comments.php
+msgid "Los comentarios están cerrados."
+msgstr "Comments are closed."
+
+#: comments.php
+msgid "Deja un comentario"
+msgstr "Leave a comment"
+
+#: comments.php
+msgid "Responder a %s"
+msgstr "Reply to %s"
+
+#: comments.php
+msgid "Cancelar respuesta"
+msgstr "Cancel reply"
+
+#: comments.php
+msgid "Publicar comentario"
+msgstr "Post comment"
+
+#: comments.php
+msgid "Comentario <span aria-required=\"true\">*</span>"
+msgstr "Comment <span aria-required=\"true\">*</span>"
+
+#: comments.php
+msgid "Nombre <span aria-required=\"true\">*</span>"
+msgstr "Name <span aria-required=\"true\">*</span>"
+
+#: comments.php
+msgid "Correo electrónico <span aria-required=\"true\">*</span>"
+msgstr "Email <span aria-required=\"true\">*</span>"
+
+#: sidebar.php
+msgid "Últimas Noticias"
+msgstr "Latest News"
+
+#: sidebar.php
+msgid "Más Leídas"
+msgstr "Most Read"
+
+#: sidebar.php
+msgid "Sin datos todavía."
+msgstr "No data yet."
+
+#: front-page.php
+msgid "No hay noticias recientes."
+msgstr "No recent news."
+
+#: front-page.php
+msgid "visitas"
+msgstr "views"
+
+#: functions.php
+msgid "Menú Principal"
+msgstr "Main Menu"
+
+#: functions.php
+msgid "Menú Footer"
+msgstr "Footer Menu"
+
+#: functions.php
+msgid "Sidebar de Noticias"
+msgstr "News Sidebar"
+
+#: functions.php
+msgid "Sidebar que aparece en las noticias y páginas."
+msgstr "Sidebar that appears on posts and pages."
+
+#: functions.php
+msgid "Footer Área %d"
+msgstr "Footer Area %d"
+
+#: functions.php
+msgid "Área de widgets del footer número %d."
+msgstr "Footer widget area number %d."
+
+#: functions.php
+msgid "Redes Sociales"
+msgstr "Social Networks"
+
+#: functions.php
+msgid "Radio / Audio en Vivo"
+msgstr "Radio / Live Audio"
+
+#: functions.php
+msgid "URL del stream (mp3/m3u8)"
+msgstr "Stream URL (mp3/m3u8)"
+
+#: functions.php
+msgid "Texto del reproductor"
+msgstr "Player text"
+
+#: functions.php
+msgid "Sección de Imágenes / Links"
+msgstr "Images / Links Section"
+
+#: functions.php
+msgid "Imagen %d"
+msgstr "Image %d"
+
+#: functions.php
+msgid "URL %d"
+msgstr "URL %d"
+
+#: functions.php
+msgid "Texto %d"
+msgstr "Text %d"
+
+#: functions.php
+msgid "Secciones de Categorías (Inicio)"
+msgstr "Category Sections (Home)"
+
+#: functions.php
+msgid "Categoría %d (Grande)"
+msgstr "Category %d (Large)"
+
+#: functions.php
+msgid "Categoría %d (Mediana)"
+msgstr "Category %d (Medium)"
+
+#: functions.php
+msgid "Categoría %d (Pequeña)"
+msgstr "Category %d (Small)"
+
+#: functions.php
+msgid "-- Seleccionar categoría --"
+msgstr "-- Select category --"
+
+#: functions.php
+msgid "Categoría"
+msgstr "Category"
+
+#: functions.php
+msgid "Cantidad de noticias"
+msgstr "Number of posts"
+
+#: functions.php
+msgid "Últimas / Más leídas (Inicio)"
+msgstr "Latest / Most Read (Home)"
+
+#: functions.php
+msgid "Cantidad Últimas Noticias"
+msgstr "Latest News Quantity"
+
+#: functions.php
+msgid "Cantidad Más Leídas"
+msgstr "Most Read Quantity"
+
+#: functions.php
+msgid "Slug de categoría Fotorreportajes"
+msgstr "Photoreports category slug"
+
+#: functions.php
+msgid "Sección de Videos (Inicio)"
+msgstr "Videos Section (Home)"
+
+#: functions.php
+msgid "Título video %d"
+msgstr "Video %d title"
+
+#: functions.php
+msgid "URL YouTube %d"
+msgstr "YouTube URL %d"
+
+#: functions.php
+msgid "Información del Footer"
+msgstr "Footer Information"
+
+#: functions.php
+msgid "Texto de copyright"
+msgstr "Copyright text"
+
+#: author.php
+msgid "Todas las noticias de %s"
+msgstr "All posts by %s"
+
+#: functions.php
+msgid "Rendimiento y UX"
+msgstr "Performance and UX"
+
+#: functions.php
+msgid "Activar Scroll Suave"
+msgstr "Enable Smooth Scroll"
+
+#: functions.php
+msgid "Botón \"Volver Arriba\""
+msgstr "Back to Top Button"
+
+#: footer.php
+msgid "Volver arriba"
+msgstr "Back to top"
+
+#: functions.php
+msgid "Breadcrumb (Migas de Pan)"
+msgstr "Breadcrumb"
+
+#: functions.php
+msgid "Mostrar Breadcrumb"
+msgstr "Show Breadcrumb"
+
+#: functions.php
+msgid "Texto para Inicio"
+msgstr "Home Text"
+
+#: functions.php
+msgid "Separador"
+msgstr "Separator"
+
+#: functions.php
+msgid "Botones Compartir"
+msgstr "Share Buttons"
+
+#: functions.php
+msgid "Mostrar botones de compartir"
+msgstr "Show share buttons"
+
+#: functions.php
+msgid "Ubicación"
+msgstr "Position"
+
+#: functions.php
+msgid "Después de fecha/autor (arriba)"
+msgstr "After date/author (top)"
+
+#: functions.php
+msgid "Antes de etiquetas (abajo)"
+msgstr "Before tags (bottom)"
+
+#: functions.php
+msgid "Ambos lugares"
+msgstr "Both places"
+
+#: functions.php
+msgid "Estilo de botones"
+msgstr "Button style"
+
+#: functions.php
+msgid "Círculo"
+msgstr "Circle"
+
+#: functions.php
+msgid "Cuadrado"
+msgstr "Square"
+
+#: functions.php
+msgid "Simple (iconos)"
+msgstr "Simple (icons)"
+
+#: functions.php
+msgid "SEO"
+msgstr "SEO"
+
+#: functions.php
+msgid "Activar meta tags SEO"
+msgstr "Enable SEO meta tags"
+
+#: functions.php
+msgid "Usuario de Twitter (sin @)"
+msgstr "Twitter username (without @)"
+
+#: functions.php
+msgid "Seguridad"
+msgstr "Security"
+
+#: functions.php
+msgid "Activar medidas de seguridad"
+msgstr "Enable security measures"
+
+#: class-breadcrumb.php
+msgid "Inicio"
+msgstr "Home"
+
+#: class-breadcrumb.php
+msgid "Blog"
+msgstr "Blog"
+
+#: class-breadcrumb.php
+msgid "Archivos"
+msgstr "Archives"
+
+#: class-breadcrumb.php
+msgid "Resultados de búsqueda"
+msgstr "Search results"
+
+#: class-breadcrumb.php
+msgid "Error 404"
+msgstr "404 Error"

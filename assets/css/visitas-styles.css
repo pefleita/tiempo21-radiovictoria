@@ -1,0 +1,111 @@
+/* View counter styles */
+.t21-visitas-contador {
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    line-height: 1.3;
+}
+
+.t21-visitas-pequeno {
+    font-size: 0.75rem;
+}
+
+.t21-visitas-normal {
+    font-size: 0.875rem;
+}
+
+.t21-visitas-grande {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.t21-visitas-icono {
+    margin-right: 4px;
+}
+
+.t21-visitas-numero {
+    font-weight: 600;
+}
+
+.t21-visitas-texto {
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* Most viewed posts styles */
+.posts-mas-vistos {
+    margin: 1rem 0;
+}
+
+.posts-mas-vistos.vacio {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+    text-align: center;
+    color: #666;
+}
+
+.posts-mas-vistos .titulo-populares {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #006622;
+}
+
+.posts-mas-vistos .lista-populares {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.posts-mas-vistos .post-popular {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.posts-mas-vistos .post-popular:last-child {
+    border-bottom: none;
+}
+
+.posts-mas-vistos .numero-posicion {
+    font-weight: bold;
+    color: #006622;
+    margin-right: 5px;
+}
+
+.posts-mas-vistos .titulo-post {
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.posts-mas-vistos .titulo-post:hover {
+    color: #006622;
+}
+
+.posts-mas-vistos .meta-post {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 3px;
+}
+
+.posts-mas-vistos .visitas-count {
+    color: #006622;
+    font-weight: 500;
+}
+
+.posts-mas-vistos .post-fecha {
+    color: #666;
+}
+
+.posts-mas-vistos .post-excerpt {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 3px;
+}
+
+/* Sidebar view counter styles */
+.contador-visitas {
+    font-weight: 600;
+    color: #006622;
+}

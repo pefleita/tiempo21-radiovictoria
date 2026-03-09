@@ -1,0 +1,1 @@
+Carpeta para Font Awesome 6. Ver README.md para instrucciones de instalación.

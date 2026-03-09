@@ -7,7 +7,7 @@
 
     <!-- Últimas noticias widget por defecto -->
     <div class="widget">
-        <h3 class="widget-title"><!-- <i class="fa-solid fa-bolt"></i> --><?php esc_html_e( 'Últimas Noticias', 'tiempo21' ); ?></h3>
+        <h3 class="widget-title"><!-- <i class="fa-solid fa-bolt"></i> --><?php esc_html_e( 'Últimas Noticias', 'tiempo21-radiovictoria' ); ?></h3>
         <div class="widget-content">
             <?php
             $sidebar_latest = new WP_Query( [ 'posts_per_page' => 6, 'ignore_sticky_posts' => true, 'no_found_rows' => true ] );
@@ -31,7 +31,7 @@
         $popular_posts = t21_get_popular_posts(30, $popular_count);
     ?>
     <div class="widget">
-        <h3 class="widget-title"><!-- <i class="fa-solid fa-fire"></i> --><?php esc_html_e( 'Más Leídas', 'tiempo21' ); ?></h3>
+        <h3 class="widget-title"><!-- <i class="fa-solid fa-fire"></i> --><?php esc_html_e( 'Más Leídas', 'tiempo21-radiovictoria' ); ?></h3>
         <div class="widget-content">
             <ul class="side-news-list">
                 <?php if ( ! empty( $popular_posts ) ) :
@@ -43,13 +43,13 @@
                             <a href="<?php echo esc_url( $post_item['link'] ); ?>" class="side-news-item__title"><?php echo esc_html( $post_item['title'] ); ?></a>
                             <div class="side-news-item__date">
                                 <i class="fa-solid fa-eye"></i>
-                                <?php echo number_format_i18n( $post_item['views'] ); esc_html_e( ' visitas', 'tiempo21' ); ?>
+                                <?php echo number_format_i18n( $post_item['views'] ); esc_html_e( ' visitas', 'tiempo21-radiovictoria' ); ?>
                             </div>
                         </div>
                     </li>
                     <?php $n++; endforeach;
                 else : ?>
-                    <li style="padding:.75rem;font-size:.85rem;color:var(--color-text-muted);"><?php esc_html_e( 'Sin datos todavía.', 'tiempo21' ); ?></li>
+                    <li style="padding:.75rem;font-size:.85rem;color:var(--color-text-muted);"><?php esc_html_e( 'Sin datos todavía.', 'tiempo21-radiovictoria' ); ?></li>
                 <?php endif; ?>
             </ul>
         </div>

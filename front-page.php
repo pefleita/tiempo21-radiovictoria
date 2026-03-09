@@ -93,14 +93,14 @@ $popular_posts = t21_get_popular_posts(30, $popular_count);
                 </li>
                 <?php $n++; endwhile; wp_reset_postdata();
             else : ?>
-                <li style="padding:.75rem;font-size:.85rem;color:var(--color-text-muted);"><?php esc_html_e( 'No hay noticias recientes.', 'tiempo21' ); ?></li>
+                <li style="padding:.75rem;font-size:.85rem;color:var(--color-text-muted);"><?php esc_html_e( 'No hay noticias recientes.', 'tiempo21-radiovictoria' ); ?></li>
             <?php endif; ?>
         </ul>
     </div>
 
     <!-- Más Leídas -->
     <div class="hero-side">
-        <h2 class="section-title"><!-- <i class="fa-solid fa-fire"></i> --><?php esc_html_e( 'Más Leídas', 'tiempo21' ); ?></h2>
+        <h2 class="section-title"><!-- <i class="fa-solid fa-fire"></i> --><?php esc_html_e( 'Más Leídas', 'tiempo21-radiovictoria' ); ?></h2>
         <ul class="side-news-list">
             <?php if ( ! empty( $popular_posts ) ) :
                 $n = 1;
@@ -111,13 +111,13 @@ $popular_posts = t21_get_popular_posts(30, $popular_count);
                         <a href="<?php echo esc_url( $post_item['link'] ); ?>" class="side-news-item__title"><?php echo esc_html( $post_item['title'] ); ?></a>
                         <div class="side-news-item__date">
                             <i class="fa-solid fa-eye"></i>
-                            <?php echo number_format_i18n( $post_item['views'] ); esc_html_e( ' visitas', 'tiempo21' ); ?>
+                            <?php echo number_format_i18n( $post_item['views'] ); esc_html_e( ' visitas', 'tiempo21-radiovictoria' ); ?>
                         </div>
                     </div>
                 </li>
                 <?php $n++; endforeach;
             else : ?>
-                <li style="padding:.75rem;font-size:.85rem;color:var(--color-text-muted);"><?php esc_html_e( 'Sin datos todavía.', 'tiempo21' ); ?></li>
+                <li style="padding:.75rem;font-size:.85rem;color:var(--color-text-muted);"><?php esc_html_e( 'Sin datos todavía.', 'tiempo21-radiovictoria' ); ?></li>
             <?php endif; ?>
         </ul>
     </div>

@@ -8,7 +8,7 @@ if ( post_password_required() ) return;
         <?php
         $count = get_comments_number();
         printf(
-            _n( '%s Comentario', '%s Comentarios', $count, 'tiempo21' ),
+            _n( '%s Comentario', '%s Comentarios', $count, 'tiempo21-radiovictoria' ),
             number_format_i18n( $count )
         );
         ?>
@@ -65,13 +65,13 @@ if ( post_password_required() ) return;
         'cancel_reply_link'    => 'Cancelar respuesta',
         'label_submit'         => 'Publicar comentario',
         'class_submit'         => 'btn btn-primary',
-        'comment_field'        => '<div style="margin-bottom:.85rem;"><label for="comment">' . __( 'Comentario <span aria-required="true">*</span>', 'tiempo21' ) . '</label><textarea id="comment" name="comment" rows="5" required></textarea></div>',
+        'comment_field'        => '<div style="margin-bottom:.85rem;"><label for="comment">' . __( 'Comentario <span aria-required="true">*</span>', 'tiempo21-radiovictoria' ) . '</label><textarea id="comment" name="comment" rows="5" required></textarea></div>',
         'comment_notes_before' => '',
         'comment_notes_after'  => '',
         'class_form'           => 'comment-form',
         'fields'               => [
-            'author' => '<div class="form-grid"><div><label for="author">' . __( 'Nombre <span aria-required="true">*</span>', 'tiempo21' ) . '</label><input type="text" id="author" name="author" required></div>',
-            'email'  => '<div><label for="email">' . __( 'Correo electrónico <span aria-required="true">*</span>', 'tiempo21' ) . '</label><input type="email" id="email" name="email" required></div></div>',
+            'author' => '<div class="form-grid"><div><label for="author">' . __( 'Nombre <span aria-required="true">*</span>', 'tiempo21-radiovictoria' ) . '</label><input type="text" id="author" name="author" required></div>',
+            'email'  => '<div><label for="email">' . __( 'Correo electrónico <span aria-required="true">*</span>', 'tiempo21-radiovictoria' ) . '</label><input type="email" id="email" name="email" required></div></div>',
             'url'    => '',
             'cookies'=> '',
         ],

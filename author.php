@@ -15,7 +15,7 @@
                 <?php endif; ?>
                 <p style="font-size:.82rem;color:var(--color-text-muted);margin-top:.4rem;">
                     <i class="fa-solid fa-newspaper"></i>
-                    <?php printf( __( '%s publicaciones', 'tiempo21' ), count_user_posts( $author->ID ) ); ?>
+                    <?php printf( __( '%s publicaciones', 'tiempo21-radiovictoria' ), count_user_posts( $author->ID ) ); ?>
                 </p>
             </div>
         </div>

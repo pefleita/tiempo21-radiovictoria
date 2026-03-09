@@ -9,7 +9,7 @@
                 Resultados para: <em><?php echo esc_html( get_search_query() ); ?></em>
             </h1>
             <?php if ( have_posts() ) : ?>
-            <p class="archive-desc"><?php printf( __( '%d resultados encontrados', 'tiempo21' ), $wp_query->found_posts ); ?></p>
+            <p class="archive-desc"><?php printf( __( '%d resultados encontrados', 'tiempo21-radiovictoria' ), $wp_query->found_posts ); ?></p>
             <?php endif; ?>
         </header>
 

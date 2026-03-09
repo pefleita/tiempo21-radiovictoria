@@ -34,11 +34,11 @@ function t21_theme_setup() {
     add_image_size( 'thumb-tiny',   120,  80, true );
 
     register_nav_menus( [
-        'primary' => __( 'Menu Principal', 'tiempo21' ),
-        'footer'  => __( 'Menu Footer',    'tiempo21' ),
+        'primary' => __( 'Menu Principal', 'tiempo21-radiovictoria' ),
+        'footer'  => __( 'Menu Footer',    'tiempo21-radiovictoria' ),
     ] );
 
-    load_theme_textdomain( 'tiempo21', T21_DIR . '/languages' );
+    load_theme_textdomain( 'tiempo21-radiovictoria', T21_DIR . '/languages' );
 }
 add_action( 'after_setup_theme', 't21_theme_setup' );
 
@@ -70,9 +70,9 @@ add_filter( 'script_loader_tag', 't21_add_defer_to_scripts', 10, 2 );
    ========================================= */
 function t21_widgets_init() {
     register_sidebar( [
-        'name'          => __( 'Sidebar de Noticias', 'tiempo21' ),
+        'name'          => __( 'Sidebar de Noticias', 'tiempo21-radiovictoria' ),
         'id'            => 'sidebar-single',
-        'description'   => __( 'Sidebar que aparece en las noticias y paginas.', 'tiempo21' ),
+        'description'   => __( 'Sidebar que aparece en las noticias y paginas.', 'tiempo21-radiovictoria' ),
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title">',
@@ -81,9 +81,9 @@ function t21_widgets_init() {
 
     for ( $i = 1; $i <= 3; $i++ ) {
         register_sidebar( [
-            'name'          => sprintf( __( 'Footer Area %d', 'tiempo21' ), $i ),
+            'name'          => sprintf( __( 'Footer Area %d', 'tiempo21-radiovictoria' ), $i ),
             'id'            => 'footer-' . $i,
-            'description'   => sprintf( __( 'Area de widgets del footer numero %d.', 'tiempo21' ), $i ),
+            'description'   => sprintf( __( 'Area de widgets del footer numero %d.', 'tiempo21-radiovictoria' ), $i ),
             'before_widget' => '<div id="%1$s" class="footer-widget-item %2$s">',
             'after_widget'  => '</div>',
             'before_title'  => '<h4 class="footer-widget-title">',
@@ -105,7 +105,7 @@ function t21_customize_register( $wp_customize ) {
         'transport'         => 'refresh',
     ] );
     $wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 't21_banner_image', [
-        'label'     => __( 'Banner del sitio', 'tiempo21' ),
+        'label'     => __( 'Banner del sitio', 'tiempo21-radiovictoria' ),
         'section'   => 'title_tagline',
         'mime_type' => 'image',
     ] ) );
@@ -117,7 +117,7 @@ function t21_customize_register( $wp_customize ) {
         'transport'         => 'refresh',
     ] );
     $wp_customize->add_control( 't21_hide_site_title', [
-        'label'    => __( 'Ocultar título del sitio (visible para buscadores)', 'tiempo21' ),
+        'label'    => __( 'Ocultar título del sitio (visible para buscadores)', 'tiempo21-radiovictoria' ),
         'section'  => 'title_tagline',
         'type'     => 'checkbox',
     ] );
@@ -129,14 +129,14 @@ function t21_customize_register( $wp_customize ) {
         'transport'         => 'refresh',
     ] );
     $wp_customize->add_control( 't21_hide_site_description', [
-        'label'    => __( 'Ocultar descripción del sitio (visible para buscadores)', 'tiempo21' ),
+        'label'    => __( 'Ocultar descripción del sitio (visible para buscadores)', 'tiempo21-radiovictoria' ),
         'section'  => 'title_tagline',
         'type'     => 'checkbox',
     ] );
 
     // Social links
     $wp_customize->add_section( 't21_social', [
-        'title'    => __( 'Redes Sociales', 'tiempo21' ),
+        'title'    => __( 'Redes Sociales', 'tiempo21-radiovictoria' ),
         'priority' => 30,
     ] );
     $socials = [
@@ -157,7 +157,7 @@ function t21_customize_register( $wp_customize ) {
 
     // Audio stream
     $wp_customize->add_section( 't21_audio', [
-        'title'    => __( 'Radio / Audio en Vivo', 'tiempo21' ),
+        'title'    => __( 'Radio / Audio en Vivo', 'tiempo21-radiovictoria' ),
         'priority' => 35,
     ] );
     $wp_customize->add_setting( 't21_audio_url',   [ 'default' => '', 'sanitize_callback' => 'esc_url_raw' ] );
@@ -167,7 +167,7 @@ function t21_customize_register( $wp_customize ) {
 
     // Image links section
     $wp_customize->add_section( 't21_imglinks', [
-        'title'    => __( 'Seccion de Imagenes / Links', 'tiempo21' ),
+        'title'    => __( 'Seccion de Imagenes / Links', 'tiempo21-radiovictoria' ),
         'priority' => 40,
     ] );
     for ( $i = 1; $i <= 4; $i++ ) {
@@ -185,7 +185,7 @@ function t21_customize_register( $wp_customize ) {
 
     // Category sections
     $wp_customize->add_panel( 't21_cats_panel', [
-        'title'    => __( 'Secciones de Categorias (Inicio)', 'tiempo21' ),
+        'title'    => __( 'Secciones de Categorias (Inicio)', 'tiempo21-radiovictoria' ),
         'priority' => 50,
     ] );
     $cat_configs = [
@@ -199,7 +199,7 @@ function t21_customize_register( $wp_customize ) {
     ];
     
     $categories = get_categories( [ 'hide_empty' => false ] );
-    $cat_choices = [ '' => __( '-- Seleccionar categoria --', 'tiempo21' ) ];
+    $cat_choices = [ '' => __( '-- Seleccionar categoria --', 'tiempo21-radiovictoria' ) ];
     foreach ( $categories as $cat ) {
         $cat_choices[ $cat->slug ] = $cat->name;
     }
@@ -212,13 +212,13 @@ function t21_customize_register( $wp_customize ) {
         $wp_customize->add_setting( 't21_cat_slug_' . $n,    [ 'default' => '', 'sanitize_callback' => 'sanitize_text_field' ] );
         $wp_customize->add_setting( 't21_cat_count_' . $n, [ 'default' => $cfg['count'], 'sanitize_callback' => 'absint' ] );
         $wp_customize->add_control( 't21_cat_slug_' . $n, [
-            'label'   => __( 'Categoria', 'tiempo21' ),
+            'label'   => __( 'Categoria', 'tiempo21-radiovictoria' ),
             'section' => 't21_cat_' . $n,
             'type'    => 'select',
             'choices' => $cat_choices,
         ] );
         $wp_customize->add_control( 't21_cat_count_' . $n, [
-            'label'   => __( 'Cantidad de noticias', 'tiempo21' ),
+            'label'   => __( 'Cantidad de noticias', 'tiempo21-radiovictoria' ),
             'section' => 't21_cat_' . $n,
             'type'    => 'number',
         ] );
@@ -226,7 +226,7 @@ function t21_customize_register( $wp_customize ) {
 
     // Latest & Most Read counts
     $wp_customize->add_section( 't21_hero_counts', [
-        'title'    => __( 'Ultimas / Mas leidas (Inicio)', 'tiempo21' ),
+        'title'    => __( 'Ultimas / Mas leidas (Inicio)', 'tiempo21-radiovictoria' ),
         'priority' => 45,
     ] );
     $wp_customize->add_setting( 't21_latest_count',  [ 'default' => 5, 'sanitize_callback' => 'absint' ] );
@@ -236,14 +236,14 @@ function t21_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 't21_photo_cat', [ 'default' => 'fotorreportajes', 'sanitize_callback' => 'sanitize_text_field' ] );
     $wp_customize->add_control( 't21_photo_cat', [
-        'label'   => __( 'Slug de categoria Fotorreportajes', 'tiempo21' ),
+        'label'   => __( 'Slug de categoria Fotorreportajes', 'tiempo21-radiovictoria' ),
         'section' => 't21_hero_counts',
         'type'    => 'text',
     ] );
 
     // Videos section
     $wp_customize->add_section( 't21_videos', [
-        'title'    => __( 'Seccion de Videos (Inicio)', 'tiempo21' ),
+        'title'    => __( 'Seccion de Videos (Inicio)', 'tiempo21-radiovictoria' ),
         'priority' => 55,
     ] );
     for ( $v = 1; $v <= 3; $v++ ) {
@@ -255,7 +255,7 @@ function t21_customize_register( $wp_customize ) {
 
     // Footer info
     $wp_customize->add_section( 't21_footer_info', [
-        'title'    => __( 'Informacion del Footer', 'tiempo21' ),
+        'title'    => __( 'Informacion del Footer', 'tiempo21-radiovictoria' ),
         'priority' => 60,
     ] );
     $wp_customize->add_setting( 't21_footer_copy', [ 'default' => '&copy; ' . date( 'Y' ) . ' Tiempo21 - Radio Victoria. Todos los derechos reservados.', 'sanitize_callback' => 'wp_kses_post' ] );
@@ -263,7 +263,7 @@ function t21_customize_register( $wp_customize ) {
 
     // Performance & UX
     $wp_customize->add_section( 't21_ux', [
-        'title'    => __( 'Rendimiento y UX', 'tiempo21' ),
+        'title'    => __( 'Rendimiento y UX', 'tiempo21-radiovictoria' ),
         'priority' => 65,
     ] );
     $wp_customize->add_setting( 't21_smooth_scroll', [
@@ -271,7 +271,7 @@ function t21_customize_register( $wp_customize ) {
         'sanitize_callback' => 't21_sanitize_checkbox',
     ] );
     $wp_customize->add_control( 't21_smooth_scroll', [
-        'label'   => __( 'Activar Scroll Suave', 'tiempo21' ),
+        'label'   => __( 'Activar Scroll Suave', 'tiempo21-radiovictoria' ),
         'section' => 't21_ux',
         'type'    => 'checkbox',
     ] );
@@ -280,14 +280,14 @@ function t21_customize_register( $wp_customize ) {
         'sanitize_callback' => 't21_sanitize_checkbox',
     ] );
     $wp_customize->add_control( 't21_back_to_top', [
-        'label'   => __( 'Boton "Volver Arriba"', 'tiempo21' ),
+        'label'   => __( 'Boton "Volver Arriba"', 'tiempo21-radiovictoria' ),
         'section' => 't21_ux',
         'type'    => 'checkbox',
     ] );
 
     // Breadcrumb
     $wp_customize->add_section( 't21_breadcrumb', [
-        'title'    => __( 'Breadcrumb (Migas de Pan)', 'tiempo21' ),
+        'title'    => __( 'Breadcrumb (Migas de Pan)', 'tiempo21-radiovictoria' ),
         'priority' => 66,
     ] );
     $wp_customize->add_setting( 't21_breadcrumb_enable', [
@@ -295,16 +295,16 @@ function t21_customize_register( $wp_customize ) {
         'sanitize_callback' => 't21_sanitize_checkbox',
     ] );
     $wp_customize->add_control( 't21_breadcrumb_enable', [
-        'label'   => __( 'Mostrar Breadcrumb', 'tiempo21' ),
+        'label'   => __( 'Mostrar Breadcrumb', 'tiempo21-radiovictoria' ),
         'section' => 't21_breadcrumb',
         'type'    => 'checkbox',
     ] );
     $wp_customize->add_setting( 't21_breadcrumb_home', [
-        'default'           => __( 'Inicio', 'tiempo21' ),
+        'default'           => __( 'Inicio', 'tiempo21-radiovictoria' ),
         'sanitize_callback' => 'sanitize_text_field',
     ] );
     $wp_customize->add_control( 't21_breadcrumb_home', [
-        'label'   => __( 'Texto para Inicio', 'tiempo21' ),
+        'label'   => __( 'Texto para Inicio', 'tiempo21-radiovictoria' ),
         'section' => 't21_breadcrumb',
         'type'    => 'text',
     ] );
@@ -313,14 +313,14 @@ function t21_customize_register( $wp_customize ) {
         'sanitize_callback' => 'sanitize_text_field',
     ] );
     $wp_customize->add_control( 't21_breadcrumb_separator', [
-        'label'   => __( 'Separador', 'tiempo21' ),
+        'label'   => __( 'Separador', 'tiempo21-radiovictoria' ),
         'section' => 't21_breadcrumb',
         'type'    => 'text',
     ] );
 
     // Share Buttons
     $wp_customize->add_section( 't21_share', [
-        'title'    => __( 'Botones Compartir', 'tiempo21' ),
+        'title'    => __( 'Botones Compartir', 'tiempo21-radiovictoria' ),
         'priority' => 67,
     ] );
     $wp_customize->add_setting( 't21_share_enable', [
@@ -328,7 +328,7 @@ function t21_customize_register( $wp_customize ) {
         'sanitize_callback' => 't21_sanitize_checkbox',
     ] );
     $wp_customize->add_control( 't21_share_enable', [
-        'label'   => __( 'Mostrar botones de compartir', 'tiempo21' ),
+        'label'   => __( 'Mostrar botones de compartir', 'tiempo21-radiovictoria' ),
         'section' => 't21_share',
         'type'    => 'checkbox',
     ] );
@@ -337,13 +337,13 @@ function t21_customize_register( $wp_customize ) {
         'sanitize_callback' => 'sanitize_text_field',
     ] );
     $wp_customize->add_control( 't21_share_position', [
-        'label'   => __( 'Location', 'tiempo21' ),
+        'label'   => __( 'Location', 'tiempo21-radiovictoria' ),
         'section' => 't21_share',
         'type'    => 'select',
         'choices' => [
-            'after_meta'    => __( 'After date/author (top)', 'tiempo21' ),
-            'before_tags'   => __( 'Before tags (bottom)', 'tiempo21' ),
-            'both'          => __( 'Both locations', 'tiempo21' ),
+            'after_meta'    => __( 'After date/author (top)', 'tiempo21-radiovictoria' ),
+            'before_tags'   => __( 'Before tags (bottom)', 'tiempo21-radiovictoria' ),
+            'both'          => __( 'Both locations', 'tiempo21-radiovictoria' ),
         ],
     ] );
     $wp_customize->add_setting( 't21_share_style', [
@@ -351,19 +351,19 @@ function t21_customize_register( $wp_customize ) {
         'sanitize_callback' => 'sanitize_text_field',
     ] );
     $wp_customize->add_control( 't21_share_style', [
-        'label'   => __( 'Button style', 'tiempo21' ),
+        'label'   => __( 'Button style', 'tiempo21-radiovictoria' ),
         'section' => 't21_share',
         'type'    => 'select',
         'choices' => [
-            'circle'  => __( 'Circle', 'tiempo21' ),
-            'square'  => __( 'Square', 'tiempo21' ),
-            'simple'  => __( 'Simple (icons)', 'tiempo21' ),
+            'circle'  => __( 'Circle', 'tiempo21-radiovictoria' ),
+            'square'  => __( 'Square', 'tiempo21-radiovictoria' ),
+            'simple'  => __( 'Simple (icons)', 'tiempo21-radiovictoria' ),
         ],
     ] );
 
     // SEO
     $wp_customize->add_section( 't21_seo', [
-        'title'    => __( 'SEO', 'tiempo21' ),
+        'title'    => __( 'SEO', 'tiempo21-radiovictoria' ),
         'priority' => 68,
     ] );
     $wp_customize->add_setting( 't21_seo_enable', [
@@ -371,7 +371,7 @@ function t21_customize_register( $wp_customize ) {
         'sanitize_callback' => 't21_sanitize_checkbox',
     ] );
     $wp_customize->add_control( 't21_seo_enable', [
-        'label'   => __( 'Activar meta tags SEO', 'tiempo21' ),
+        'label'   => __( 'Activar meta tags SEO', 'tiempo21-radiovictoria' ),
         'section' => 't21_seo',
         'type'    => 'checkbox',
     ] );
@@ -380,14 +380,14 @@ function t21_customize_register( $wp_customize ) {
         'sanitize_callback' => 'sanitize_text_field',
     ] );
     $wp_customize->add_control( 't21_seo_twitter', [
-        'label'   => __( 'Usuario de Twitter (sin @)', 'tiempo21' ),
+        'label'   => __( 'Usuario de Twitter (sin @)', 'tiempo21-radiovictoria' ),
         'section' => 't21_seo',
         'type'    => 'text',
     ] );
 
     // Security
     $wp_customize->add_section( 't21_security', [
-        'title'    => __( 'Seguridad', 'tiempo21' ),
+        'title'    => __( 'Seguridad', 'tiempo21-radiovictoria' ),
         'priority' => 69,
     ] );
     $wp_customize->add_setting( 't21_security_enable', [
@@ -395,14 +395,14 @@ function t21_customize_register( $wp_customize ) {
         'sanitize_callback' => 't21_sanitize_checkbox',
     ] );
     $wp_customize->add_control( 't21_security_enable', [
-        'label'   => __( 'Activar medidas de seguridad', 'tiempo21' ),
+        'label'   => __( 'Activar medidas de seguridad', 'tiempo21-radiovictoria' ),
         'section' => 't21_security',
         'type'    => 'checkbox',
     ] );
 
     // Posts Listing Options
     $wp_customize->add_section( 't21_posts_listing', [
-        'title'    => __( 'Listado de Posts', 'tiempo21' ),
+        'title'    => __( 'Listado de Posts', 'tiempo21-radiovictoria' ),
         'priority' => 71,
     ] );
 
@@ -412,23 +412,23 @@ function t21_customize_register( $wp_customize ) {
         'sanitize_callback' => 'sanitize_text_field',
     ] );
     $wp_customize->add_control( 't21_posts_layout', [
-        'label'   => __( 'Tipo de diseño', 'tiempo21' ),
+        'label'   => __( 'Tipo de diseño', 'tiempo21-radiovictoria' ),
         'section' => 't21_posts_listing',
         'type'    => 'radio',
         'choices' => [
-            'grid' => __( 'Grid (2 columnas)', 'tiempo21' ),
-            'list' => __( 'List (imagen izquierda)', 'tiempo21' ),
+            'grid' => __( 'Grid (2 columnas)', 'tiempo21-radiovictoria' ),
+            'list' => __( 'List (imagen izquierda)', 'tiempo21-radiovictoria' ),
         ],
     ] );
 
     // Show/hide options
     $options = [
-        't21_posts_show_image' => __( 'Mostrar imagen', 'tiempo21' ),
-        't21_posts_show_category' => __( 'Mostrar categoría', 'tiempo21' ),
-        't21_posts_show_title' => __( 'Mostrar título', 'tiempo21' ),
-        't21_posts_show_excerpt' => __( 'Mostrar excerpt', 'tiempo21' ),
-        't21_posts_show_date' => __( 'Mostrar fecha', 'tiempo21' ),
-        't21_posts_show_author' => __( 'Mostrar autor', 'tiempo21' ),
+        't21_posts_show_image' => __( 'Mostrar imagen', 'tiempo21-radiovictoria' ),
+        't21_posts_show_category' => __( 'Mostrar categoría', 'tiempo21-radiovictoria' ),
+        't21_posts_show_title' => __( 'Mostrar título', 'tiempo21-radiovictoria' ),
+        't21_posts_show_excerpt' => __( 'Mostrar excerpt', 'tiempo21-radiovictoria' ),
+        't21_posts_show_date' => __( 'Mostrar fecha', 'tiempo21-radiovictoria' ),
+        't21_posts_show_author' => __( 'Mostrar autor', 'tiempo21-radiovictoria' ),
     ];
 
     foreach ( $options as $key => $label ) {
@@ -449,7 +449,7 @@ function t21_customize_register( $wp_customize ) {
         'sanitize_callback' => 'absint',
     ] );
     $wp_customize->add_control( 't21_posts_excerpt_length', [
-        'label'       => __( 'Longitud del excerpt (palabras)', 'tiempo21' ),
+        'label'       => __( 'Longitud del excerpt (palabras)', 'tiempo21-radiovictoria' ),
         'section'     => 't21_posts_listing',
         'type'        => 'number',
     ] );
@@ -696,7 +696,7 @@ function t21_display_breadcrumb() {
     }
     
     $breadcrumb = new Breadcrumb_Shortcode();
-    $home_text = get_theme_mod( 't21_breadcrumb_home', __( 'Inicio', 'tiempo21' ) );
+    $home_text = get_theme_mod( 't21_breadcrumb_home', __( 'Inicio', 'tiempo21-radiovictoria' ) );
     $separator = get_theme_mod( 't21_breadcrumb_separator', '»' );
     
     echo do_shortcode( '[breadcrumb home_text="' . esc_attr( $home_text ) . '" separator="' . esc_attr( $separator ) . '"]' );

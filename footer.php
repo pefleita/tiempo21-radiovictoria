@@ -3,7 +3,7 @@
 </div><!-- #page -->
 
 <?php if ( get_theme_mod( 't21_back_to_top', true ) ) : ?>
-<button id="back-to-top" class="back-to-top" aria-label="<?php esc_attr_e( 'Volver arriba', 'tiempo21' ); ?>">
+<button id="back-to-top" class="back-to-top" aria-label="<?php esc_attr_e( 'Volver arriba', 'tiempo21-radiovictoria' ); ?>">
     <i class="fa-solid fa-arrow-up"></i>
 </button>
 <?php endif; ?>

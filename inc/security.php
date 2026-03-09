@@ -63,7 +63,7 @@ add_action('init', 't21_prevent_user_enumeration');
 function t21_prevent_user_enumeration() {
     if ( ! is_admin() && isset( $_SERVER['REQUEST_URI'] ) ) {
         if ( preg_match( '/(wp-comments-post)/', sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) ) === 0 && ! empty( $_REQUEST['author'] ) ) {
-            wp_die( esc_html__( 'Access denied', 'tiempo21' ), 'Forbidden', [ 'response' => 403 ] );
+            wp_die( esc_html__( 'Access denied', 'tiempo21-radiovictoria' ), 'Forbidden', [ 'response' => 403 ] );
         }
     }
 }
@@ -75,7 +75,7 @@ function t21_customize_login_errors($errors, $redirect_to) {
     foreach ($codes as $code) {
         if ($errors->get_error_message($code)) {
             $errors->remove($code);
-            $errors->add('invalid_credentials', '<strong>ERROR</strong>: ' . esc_html__( 'Invalid credentials.', 'tiempo21' ) . ' <a href="' . esc_url( wp_lostpassword_url() ) . '">' . esc_html__( 'Forgot your password?', 'tiempo21' ) . '</a>');
+            $errors->add('invalid_credentials', '<strong>ERROR</strong>: ' . esc_html__( 'Invalid credentials.', 'tiempo21-radiovictoria' ) . ' <a href="' . esc_url( wp_lostpassword_url() ) . '">' . esc_html__( 'Forgot your password?', 'tiempo21-radiovictoria' ) . '</a>');
             break;
         }
     }
@@ -111,7 +111,7 @@ add_action('pre_comment_on_post', 't21_verify_comment_nonce');
 function t21_verify_comment_nonce() {
     if ( ! isset( $_POST['t21_csrf_comment'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['t21_csrf_comment'] ) ), 't21_comment_nonce' ) ) {
         wp_die(
-            esc_html__( 'Security error. Try again.', 'tiempo21' ),
+            esc_html__( 'Security error. Try again.', 'tiempo21-radiovictoria' ),
             'Nonce verification failed',
             [ 'response' => 403 ]
         );

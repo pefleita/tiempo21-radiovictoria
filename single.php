@@ -29,7 +29,7 @@
                     </a>
                 </span>
                 <?php $views = t21_get_total_views( get_the_ID() ); if ( $views ) : ?>
-                <span><i class="fa-regular fa-eye"></i> <?php echo number_format_i18n( $views ); esc_html_e( ' visitas', 'tiempo21' ); ?></span>
+                <span><i class="fa-regular fa-eye"></i> <?php echo number_format_i18n( $views ); esc_html_e( ' visitas', 'tiempo21-radiovictoria' ); ?></span>
                 <?php endif; ?>
             </div>
 

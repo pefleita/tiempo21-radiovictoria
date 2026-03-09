@@ -1,5 +1,5 @@
 /*
-Theme Name: Tiempo21 de Radio Victoria
+Theme Name: Tiempo21 RadioVictoria
 Theme URI: https://www.tiempo21.cu
 Author: Peter
 Author URI: https://github.com/pefleita
@@ -10,8 +10,8 @@ Tested up to: 6.5
 Requires PHP: 8.0
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: tiempo21
-Tags: news, blog, two-columns, right-sidebar, custom-menu, featured-images, responsive-layout
+Text Domain: tiempo21-radiovictoria
+Tags: news, blog, two-columns, right-sidebar, custom-menu, featured-images
 */
 
 /* =========================================
@@ -991,8 +991,6 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
   .single-article__title { font-size: 1.25rem; }
   .hero-main__title { font-size: 1.1rem; }
 }
-
-#wpadminbar{ z-index: 999!important; }
 
 /* =========================================
    BACK TO TOP BUTTON

@@ -12,7 +12,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<a class="skip-link" href="#main"><?php esc_html_e( 'Saltar al contenido principal', 'tiempo21' ); ?></a>
+<a class="skip-link" href="#main"><?php esc_html_e( 'Saltar al contenido principal', 'tiempo21-radiovictoria' ); ?></a>
 
 <header class="site-header" id="site-header">
 

@@ -20,8 +20,8 @@ class Breadcrumb_Shortcode {
         $atts = shortcode_atts(
             array(
                 'separator'   => '»',
-                'home_text'   => __( 'Inicio', 'text-domain' ),
-                'blog_text'   => __( 'Blog', 'text-domain' ),
+                'home_text'   => __( 'Inicio', 'tiempo21-radiovictoria' ),
+                'blog_text'   => __( 'Blog', 'tiempo21-radiovictoria' ),
                 'show_current' => 'yes',
                 'schema'      => 'yes',
             ),
@@ -89,12 +89,12 @@ class Breadcrumb_Shortcode {
                 $author = get_queried_object();
                 $items[] = $this->get_simple_item( $author->display_name );
             } else {
-                $items[] = $this->get_simple_item( __( 'Archivos', 'text-domain' ) );
+                $items[] = $this->get_simple_item( __( 'Archivos', 'tiempo21-radiovictoria' ) );
             }
         } elseif ( is_search() ) {
-            $items[] = $this->get_simple_item( __( 'Resultados de búsqueda', 'text-domain' ) );
+            $items[] = $this->get_simple_item( __( 'Resultados de búsqueda', 'tiempo21-radiovictoria' ) );
         } elseif ( is_404() ) {
-            $items[] = $this->get_simple_item( __( 'Error 404', 'text-domain' ) );
+            $items[] = $this->get_simple_item( __( 'Error 404', 'tiempo21-radiovictoria' ) );
         }
 
         $output = '<nav class="breadcrumb" aria-label="Breadcrumb">';

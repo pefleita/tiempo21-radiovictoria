@@ -36,6 +36,7 @@ function t21_theme_setup() {
     register_nav_menus( [
         'primary' => __( 'Menu Principal', 'tiempo21-radiovictoria' ),
         'footer'  => __( 'Menu Footer',    'tiempo21-radiovictoria' ),
+        'footer_secondary' => __( 'Menu Footer Secundario', 'tiempo21-radiovictoria' ),
     ] );
 
     load_theme_textdomain( 'tiempo21-radiovictoria', T21_DIR . '/languages' );

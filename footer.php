@@ -36,7 +36,7 @@
                     <?php else : ?>
                     <h4 class="footer-widget-title">Radio en Las Tunas</h4>
                     <?php wp_nav_menu( [
-                        'theme_location' => 'footer',
+                        'theme_location' => 'footer_secondary',
                         'container'      => false,
                         'depth'          => 1,
                         'fallback_cb'    => false,
@@ -50,7 +50,13 @@
 
         <!-- Footer bottom -->
         <div class="footer-bottom">
-            <span><?php echo wp_kses_post( get_theme_mod( 't21_footer_copy', '&copy; ' . date( 'Y' ) . ' Tiempo21 - Radio Victoria. Todos los derechos reservados.' ) ); ?></span>
+            <span><?php
+                $footer_copy = get_theme_mod( 't21_footer_copy', '' );
+                if ( empty( $footer_copy ) ) {
+                    $footer_copy = '&copy; ' . date( 'Y' ) . ' Tiempo21 - Radio Victoria. Todos los derechos reservados.';
+                }
+                echo wp_kses_post( $footer_copy );
+            ?></span>
             <?php echo t21_get_social_icons( 'footer-social' ); ?>
         </div>
 

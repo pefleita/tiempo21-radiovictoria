@@ -286,6 +286,21 @@ function t21_customize_register( $wp_customize ) {
         'type'    => 'checkbox',
     ] );
 
+    // Login Screen
+    $wp_customize->add_section( 't21_login', [
+        'title'    => __( 'Pantalla de Login', 'tiempo21-radiovictoria' ),
+        'priority' => 65,
+    ] );
+    $wp_customize->add_setting( 't21_login_logo', [
+        'default'           => '',
+        'sanitize_callback' => 'absint',
+    ] );
+    $wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 't21_login_logo', [
+        'label'     => __( 'Logo del sitio (Login)', 'tiempo21-radiovictoria' ),
+        'section'   => 't21_login',
+        'mime_type' => 'image',
+    ] ) );
+
     // Breadcrumb
     $wp_customize->add_section( 't21_breadcrumb', [
         'title'    => __( 'Breadcrumb (Migas de Pan)', 'tiempo21-radiovictoria' ),
@@ -674,6 +689,7 @@ require_once T21_DIR . '/inc/breadcrumb/class-breadcrumb.php';
 require_once T21_DIR . '/inc/share-buttons.php';
 require_once T21_DIR . '/inc/seo.php';
 require_once T21_DIR . '/inc/security.php';
+require_once T21_DIR . '/inc/login-customizer.php';
 
 add_action( 'wp', 't21_maybe_disable_seo_security' );
 

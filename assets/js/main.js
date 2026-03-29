@@ -161,4 +161,23 @@
     }, { passive: true });
   }
 
+  /* ─── Lite Embed (YouTube Facade) ──────────────────────────────── */
+  document.querySelectorAll('.video-lite-embed').forEach(function (container) {
+    container.addEventListener('click', function () {
+      const embedUrl = container.dataset.embedUrl;
+      const videoId = container.dataset.videoId;
+      
+      if (!embedUrl) return;
+
+      const iframe = document.createElement('iframe');
+      iframe.src = embedUrl + '?autoplay=1&rel=0';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.title = container.closest('.video-card').querySelector('.video-card__title').textContent;
+      
+      container.innerHTML = '';
+      container.appendChild(iframe);
+    });
+  });
+
 })();

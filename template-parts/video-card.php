@@ -20,8 +20,10 @@ if ( ! $video_id ) {
     return;
 }
 
-$thumbnail_url = 'https://img.youtube.com/vi/' . esc_attr( $video_id ) . '/maxresdefault.jpg';
+$thumbnail_url = 'https://img.youtube.com/vi/' . esc_attr( $video_id ) . '/hqdefault.jpg';
 $embed_url = 'https://www.youtube.com/embed/' . esc_attr( $video_id );
+$youtube_title = t21_get_youtube_title( $vid_url );
+$display_title = $youtube_title ? $youtube_title : $vid_title;
 ?>
 <div class="video-card">
     <div class="video-card__embed">
@@ -36,7 +38,7 @@ $embed_url = 'https://www.youtube.com/embed/' . esc_attr( $video_id );
                     <path d="M8 5v14l11-7z"/>
                 </svg>
             </button>
+            <p class="video-lite-embed__title"><?php echo esc_html( $display_title ); ?></p>
         </div>
     </div>
-    <p class="video-card__title"><?php echo esc_html( $vid_title ); ?></p>
 </div>

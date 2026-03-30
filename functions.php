@@ -588,6 +588,43 @@ function t21_youtube_embed( $url ) {
     return 'https://www.youtube.com/embed/' . esc_attr( $video_id );
 }
 
+function t21_get_youtube_title( $url ) {
+    if ( empty( $url ) ) return '';
+    $video_id = '';
+    if ( preg_match( '/youtu\.be\/([a-zA-Z0-9_\-]+)/', $url, $m ) ) {
+        $video_id = $m[1];
+    } elseif ( preg_match( '/youtube\.com\/watch\?v=([a-zA-Z0-9_\-]+)/', $url, $m ) ) {
+        $video_id = $m[1];
+    } elseif ( preg_match( '/youtube\.com\/embed\/([a-zA-Z0-9_\-]+)/', $url, $m ) ) {
+        $video_id = $m[1];
+    }
+    if ( ! $video_id ) return '';
+
+    $oembed_url = 'https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=' . $video_id . '&format=json';
+    $response = wp_remote_get( $oembed_url, [ 'timeout' => 5 ] );
+
+    if ( ! is_wp_error( $response ) ) {
+        $body = wp_remote_retrieve_body( $response );
+        $data = json_decode( $body, true );
+        if ( isset( $data['title'] ) && ! empty( $data['title'] ) ) {
+            return $data['title'];
+        }
+    }
+
+    $noembed_url = 'https://noembed.com/embed?url=https://www.youtube.com/watch?v=' . $video_id;
+    $response2 = wp_remote_get( $noembed_url, [ 'timeout' => 5 ] );
+
+    if ( ! is_wp_error( $response2 ) ) {
+        $body2 = wp_remote_retrieve_body( $response2 );
+        $data2 = json_decode( $body2, true );
+        if ( isset( $data2['title'] ) && ! empty( $data2['title'] ) ) {
+            return $data2['title'];
+        }
+    }
+
+    return '';
+}
+
 function t21_get_thumbnail( $post_id, $size = 'card-medium', $class = '' ) {
     $thumb_id = get_post_thumbnail_id( $post_id );
     if ( $thumb_id ) {

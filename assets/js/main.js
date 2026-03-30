@@ -173,7 +173,7 @@
       iframe.src = embedUrl + '?autoplay=1&rel=0';
       iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
       iframe.allowFullscreen = true;
-      iframe.title = container.closest('.video-card').querySelector('.video-card__title').textContent;
+      iframe.title = container.querySelector('.video-lite-embed__title')?.textContent || 'Video de YouTube';
       
       container.innerHTML = '';
       container.appendChild(iframe);

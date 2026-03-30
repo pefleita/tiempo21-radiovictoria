@@ -1159,7 +1159,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.video-lite-embed__play:hover {
+.video-card:hover .video-lite-embed__play {
   background: #ff0000;
   transform: translate(-50%, -50%) scale(1.1);
 }
@@ -1167,6 +1167,28 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
 .video-lite-embed__play svg {
   width: 24px;
   height: 24px;
+}
+
+.video-lite-embed__title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 12px;
+  margin: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.4;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.video-lite-embed__title:hover {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
 }
 
 .video-lite-embed iframe {

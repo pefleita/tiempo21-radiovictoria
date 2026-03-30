@@ -333,21 +333,24 @@ for ( $v = 1; $v <= 3; $v++ ) {
             }
             if ( ! $video_id ) continue;
             
-            $thumbnail_url = 'https://img.youtube.com/vi/' . esc_attr( $video_id ) . '/maxresdefault.jpg';
-            $embed_url = 'https://www.youtube.com/embed/' . esc_attr( $video_id ); ?>
+            $thumbnail_url = 'https://img.youtube.com/vi/' . esc_attr( $video_id ) . '/hqdefault.jpg';
+            $embed_url = 'https://www.youtube.com/embed/' . esc_attr( $video_id );
+            $youtube_title = t21_get_youtube_title( $vid_url );
+            $display_title = $youtube_title ? $youtube_title : $vid_title; ?>
         <div class="video-card">
             <div class="video-card__embed">
                 <div class="video-lite-embed" data-video-id="<?php echo esc_attr( $video_id ); ?>" data-embed-url="<?php echo esc_url( $embed_url ); ?>">
                     <img 
                         src="<?php echo esc_url( $thumbnail_url ); ?>" 
-                        alt="<?php echo esc_attr( $vid_title ); ?>"
+                        alt="<?php echo esc_attr( $display_title ); ?>"
                         loading="lazy"
                     >
-                    <button class="video-lite-embed__play" aria-label="Reproducir video <?php echo esc_attr( $vid_title ); ?>">
+                    <button class="video-lite-embed__play" aria-label="Reproducir video <?php echo esc_attr( $display_title ); ?>">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </button>
+                    <p class="video-lite-embed__title"><?php echo esc_html( $display_title ); ?></p>
                 </div>
             </div>
             <p class="video-card__title"><?php echo esc_html( $vid_title ); ?></p>

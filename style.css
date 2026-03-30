@@ -973,7 +973,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
 .footer-bottom a { color: rgba(255,255,255,.6); }
 .footer-bottom a:hover { color: #fff; }
 .footer-social { display: flex; gap: .6rem; }
-.footer-social a { color: rgba(255,255,255,.65); font-size: 1rem; }
+.footer-social a { color: rgba(255,255,255,.65); font-size: 1.5rem; padding: 0 .5rem; }
 .footer-social a:hover { color: #fff; }
 
 /* =========================================
@@ -1021,12 +1021,12 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
 .back-to-top.visible {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(-50px);
 }
 
 .back-to-top:hover {
   background: var(--color-primary-dark);
-  transform: translateY(-3px);
+  transform: translateY(-53px);
 }
 
 .back-to-top:focus {

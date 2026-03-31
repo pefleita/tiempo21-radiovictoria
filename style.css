@@ -78,7 +78,13 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
   width: 100%;
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 .75rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
 }
 
 .section-title {
@@ -693,7 +699,12 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
 /* =========================================
    SINGLE POST
    ========================================= */
-.single-article { background: var(--color-bg-white); padding: 1.5rem; box-shadow: var(--shadow); }
+.single-article { background: var(--color-bg-white); padding: .75rem; box-shadow: var(--shadow); }
+@media (min-width: 768px) {
+  .single-article {
+    padding: 0 1.5rem;
+  }
+}
 .single-article__cat { margin-bottom: .75rem; }
 .single-article__title { font-size: 1.9rem; font-weight: 600; line-height: 1.3; margin-bottom: .75rem; color: var(--color-text); }
 .single-article__meta {
@@ -722,7 +733,9 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
 .single-article__content h2, .single-article__content h3 { font-weight: 600; margin: 1.25rem 0 .6rem; color: var(--color-text); }
 .single-article__content blockquote { border-left: 4px solid var(--color-primary); padding: .75rem 1rem; background: #f0f7f2; margin: 1rem 0; border-radius: 0 var(--radius) var(--radius) 0; color: var(--color-text-muted); font-style: italic; }
 .single-article__content > figure { margin: .75rem 0; background: var(--color-border-light); min-width: 90%; max-width: 900px; }
-.single-article__content img { margin: .75rem 0; }
+.single-article__content img { margin: .75rem 0; max-width: 100%; height: auto; }
+.single-article__content figure { max-width: 100%; overflow: hidden; }
+.single-article__content figure img { max-width: 100%; height: auto; }
 .single-article__tags { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--color-border-light); display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
 .single-article__tags-label { font-size: .82rem; font-weight: 600; color: var(--color-text-muted); }
 .tag-pill {

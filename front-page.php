@@ -20,6 +20,7 @@ if ( ! empty( $sticky_ids ) ) {
 
 // ─── 2. ÚLTIMAS NOTICIAS ──────────────────────────────────────────────────────
 $latest_count = (int) get_theme_mod( 't21_latest_count', 5 );
+$latest_show_image = get_theme_mod( 't21_latest_show_image', true );
 $exclude_ids  = $hero_post ? [ $hero_post->ID ] : [];
 $latest_query = new WP_Query( [
     'posts_per_page'      => $latest_count,
@@ -78,7 +79,7 @@ $popular_posts = t21_get_popular_posts(30, $popular_count);
                 $n = 1;
                 while ( $latest_query->have_posts() ) : $latest_query->the_post(); ?>
                 <li class="side-news-item">
-                    <?php if ( has_post_thumbnail() ) : ?>
+                    <?php if ( $latest_show_image && has_post_thumbnail() ) : ?>
                         <a href="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail( 'thumb-tiny', [ 'class' => 'side-news-item__img', 'loading' => 'lazy' ] ); ?>
                         </a>
@@ -152,11 +153,20 @@ $popular_posts = t21_get_popular_posts(30, $popular_count);
     <!-- Cat 1 (Grande) -->
     <div class="cat-section">
         <h2 class="section-title"><!--<i class="fa-solid fa-newspaper"></i> --><?php echo esc_html( t21_get_category_title(1) ); ?></h2>
-        <?php $q1 = t21_get_category_posts(1); ?>
+        <?php $q1 = t21_get_category_posts(1); 
+        $cat1_show_image = get_theme_mod( 't21_cat_show_image_1', true );
+        $cat1_show_date = get_theme_mod( 't21_cat_show_date_1', true );
+        $cat1_first_featured = get_theme_mod( 't21_cat_first_featured_1', true );
+        $cat1_show_excerpt = get_theme_mod( 't21_cat1_show_excerpt', true );
+        $cat1_excerpt_length = get_theme_mod( 't21_cat1_excerpt_length', 50 );
+        ?>
         <?php if ( $q1 && $q1->have_posts() ) : ?>
         <ul class="cat-section__list">
-            <?php while ( $q1->have_posts() ) : $q1->the_post(); ?>
+            <?php $cat1_idx = 0; while ( $q1->have_posts() ) : $q1->the_post(); ?>
             <li class="cat1-item">
+                <?php 
+                $show_this_image = $cat1_show_image || ( $cat1_idx === 0 && $cat1_first_featured && has_post_thumbnail() );
+                if ( $show_this_image ) : ?>
                 <a href="<?php the_permalink(); ?>">
                     <?php if ( has_post_thumbnail() ) :
                         the_post_thumbnail( 'thumb-tiny', [ 'class' => 'cat1-item__img', 'loading' => 'lazy' ] );
@@ -164,13 +174,22 @@ $popular_posts = t21_get_popular_posts(30, $popular_count);
                         <div class="cat1-item__img img-placeholder"><i class="fa-solid fa-image"></i></div>
                     <?php endif; ?>
                 </a>
+                <?php endif; ?>
                 <div class="cat1-item__body">
                     <a href="<?php the_permalink(); ?>" class="cat1-item__title"><?php the_title(); ?></a>
-                    <p class="cat1-item__excerpt"><?php echo wp_trim_words( get_the_excerpt(), 50 ); ?></p>
+                    <?php if ( $cat1_show_excerpt ) : 
+                        $post = get_post();
+                        $excerpt = has_excerpt() ? get_the_excerpt() : $post->post_content;
+                        $content = strip_tags( $excerpt );
+                    ?>
+                    <p class="cat1-item__excerpt"><?php echo wp_trim_words( $content, $cat1_excerpt_length ); ?></p>
+                    <?php endif; ?>
+                    <?php if ( $cat1_show_date ) : ?>
                     <div class="date-meta" style="margin-top:.3rem;"><i class="fa-regular fa-clock"></i> <time datetime="<?php the_date('c'); ?>"><?php echo 'hace ' . human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ); ?></time></div>
+                    <?php endif; ?>
                 </div>
             </li>
-            <?php endwhile; wp_reset_postdata(); ?>
+            <?php $cat1_idx++; endwhile; wp_reset_postdata(); ?>
         </ul>
         <?php else : ?>
         <p style="padding:.75rem;font-size:.85rem;color:var(--color-text-muted);">Configure la Categoría 1 en el Personalizador.</p>
@@ -180,11 +199,18 @@ $popular_posts = t21_get_popular_posts(30, $popular_count);
     <!-- Cat 2 (Mediana) -->
     <div class="cat-section">
         <h2 class="section-title"><!--<i class="fa-solid fa-folder-open"></i> --><?php echo esc_html( t21_get_category_title(2) ); ?></h2>
-        <?php $q2 = t21_get_category_posts(2); ?>
+        <?php $q2 = t21_get_category_posts(2);
+        $cat2_show_image = get_theme_mod( 't21_cat_show_image_2', true );
+        $cat2_show_date = get_theme_mod( 't21_cat_show_date_2', true );
+        $cat2_first_featured = get_theme_mod( 't21_cat_first_featured_2', true );
+        ?>
         <?php if ( $q2 && $q2->have_posts() ) : ?>
         <ul class="cat-section__list">
-            <?php while ( $q2->have_posts() ) : $q2->the_post(); ?>
+            <?php $cat2_idx = 0; while ( $q2->have_posts() ) : $q2->the_post(); ?>
             <li class="cat-mini-item">
+                <?php 
+                $show_this_image = $cat2_show_image || ( $cat2_idx === 0 && $cat2_first_featured && has_post_thumbnail() );
+                if ( $show_this_image ) : ?>
                 <a href="<?php the_permalink(); ?>">
                     <?php if ( has_post_thumbnail() ) :
                         the_post_thumbnail( 'card-small', [ 'class' => 'cat-mini-item__img', 'loading' => 'lazy' ] );
@@ -192,12 +218,15 @@ $popular_posts = t21_get_popular_posts(30, $popular_count);
                         <div class="cat-mini-item__img img-placeholder"><i class="fa-solid fa-image"></i></div>
                     <?php endif; ?>
                 </a>
+                <?php endif; ?>
                 <div>
                     <a href="<?php the_permalink(); ?>" class="cat-mini-item__title"><?php the_title(); ?></a>
+                    <?php if ( $cat2_show_date ) : ?>
                     <div class="date-meta" style="margin-top:.3rem;"><i class="fa-regular fa-clock"></i> <time datetime="<?php the_date('c'); ?>"><?php echo 'hace ' . human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ); ?></time></div>
+                    <?php endif; ?>
                 </div>
             </li>
-            <?php endwhile; wp_reset_postdata(); ?>
+            <?php $cat2_idx++; endwhile; wp_reset_postdata(); ?>
         </ul>
         <?php else : ?>
         <p style="padding:.75rem;font-size:.85rem;color:var(--color-text-muted);">Configure la Categoría 2 en el Personalizador.</p>
@@ -207,11 +236,18 @@ $popular_posts = t21_get_popular_posts(30, $popular_count);
     <!-- Cat 3 (Mediana) -->
     <div class="cat-section">
         <h2 class="section-title"><!--<i class="fa-solid fa-folder-open"></i> --><?php echo esc_html( t21_get_category_title(3) ); ?></h2>
-        <?php $q3 = t21_get_category_posts(3); ?>
+        <?php $q3 = t21_get_category_posts(3);
+        $cat3_show_image = get_theme_mod( 't21_cat_show_image_3', true );
+        $cat3_show_date = get_theme_mod( 't21_cat_show_date_3', true );
+        $cat3_first_featured = get_theme_mod( 't21_cat_first_featured_3', true );
+        ?>
         <?php if ( $q3 && $q3->have_posts() ) : ?>
         <ul class="cat-section__list">
-            <?php while ( $q3->have_posts() ) : $q3->the_post(); ?>
+            <?php $cat3_idx = 0; while ( $q3->have_posts() ) : $q3->the_post(); ?>
             <li class="cat-mini-item">
+                <?php 
+                $show_this_image = $cat3_show_image || ( $cat3_idx === 0 && $cat3_first_featured && has_post_thumbnail() );
+                if ( $show_this_image ) : ?>
                 <a href="<?php the_permalink(); ?>">
                     <?php if ( has_post_thumbnail() ) :
                         the_post_thumbnail( 'card-small', [ 'class' => 'cat-mini-item__img', 'loading' => 'lazy' ] );
@@ -219,12 +255,15 @@ $popular_posts = t21_get_popular_posts(30, $popular_count);
                         <div class="cat-mini-item__img img-placeholder"><i class="fa-solid fa-image"></i></div>
                     <?php endif; ?>
                 </a>
+                <?php endif; ?>
                 <div>
                     <a href="<?php the_permalink(); ?>" class="cat-mini-item__title"><?php the_title(); ?></a>
+                    <?php if ( $cat3_show_date ) : ?>
                     <div class="date-meta" style="margin-top:.3rem;"><i class="fa-regular fa-clock"></i> <time datetime="<?php the_date('c'); ?>"><?php echo 'hace ' . human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ); ?></time></div>
+                    <?php endif; ?>
                 </div>
             </li>
-            <?php endwhile; wp_reset_postdata(); ?>
+            <?php $cat3_idx++; endwhile; wp_reset_postdata(); ?>
         </ul>
         <?php else : ?>
         <p style="padding:.75rem;font-size:.85rem;color:var(--color-text-muted);">Configure la Categoría 3 en el Personalizador.</p>
@@ -239,13 +278,19 @@ $popular_posts = t21_get_popular_posts(30, $popular_count);
 <div class="fp-cats-row-4">
     <?php for ( $n = 4; $n <= 7; $n++ ) :
         $qn = t21_get_category_posts( $n );
+        $cat_show_image = get_theme_mod( 't21_cat_show_image_' . $n, true );
+        $cat_show_date = get_theme_mod( 't21_cat_show_date_' . $n, true );
+        $cat_first_featured = get_theme_mod( 't21_cat_first_featured_' . $n, true );
     ?>
     <div class="cat-section">
         <h2 class="section-title"><!--<i class="fa-solid fa-tag"></i> --><?php echo esc_html( t21_get_category_title( $n ) ); ?></h2>
         <?php if ( $qn && $qn->have_posts() ) : ?>
         <ul class="cat-section__list">
-            <?php while ( $qn->have_posts() ) : $qn->the_post(); ?>
+            <?php $cat_idx = 0; while ( $qn->have_posts() ) : $qn->the_post(); ?>
             <li class="cat-mini-item">
+                <?php 
+                $show_this_image = $cat_show_image || ( $cat_idx === 0 && $cat_first_featured && has_post_thumbnail() );
+                if ( $show_this_image ) : ?>
                 <a href="<?php the_permalink(); ?>">
                     <?php if ( has_post_thumbnail() ) :
                         the_post_thumbnail( 'card-small', [ 'class' => 'cat-mini-item__img', 'loading' => 'lazy' ] );
@@ -253,12 +298,15 @@ $popular_posts = t21_get_popular_posts(30, $popular_count);
                         <div class="cat-mini-item__img img-placeholder"><i class="fa-solid fa-image"></i></div>
                     <?php endif; ?>
                 </a>
+                <?php endif; ?>
                 <div>
                     <a href="<?php the_permalink(); ?>" class="cat-mini-item__title"><?php the_title(); ?></a>
+                    <?php if ( $cat_show_date ) : ?>
                     <div class="date-meta" style="margin-top:.3rem;"><i class="fa-regular fa-clock"></i> <time datetime="<?php the_date('c'); ?>"><?php echo 'hace ' . human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ); ?></time></div>
+                    <?php endif; ?>
                 </div>
             </li>
-            <?php endwhile; wp_reset_postdata(); ?>
+            <?php $cat_idx++; endwhile; wp_reset_postdata(); ?>
         </ul>
         <?php else : ?>
         <p style="padding:.75rem;font-size:.85rem;color:var(--color-text-muted);">Configure la Categoría <?php echo $n; ?> en el Personalizador.</p>

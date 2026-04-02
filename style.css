@@ -573,7 +573,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
 }
 .cat1-item__title { font-size: 1.2rem; font-weight: 600; line-height: 1.35; color: var(--color-text); }
 .cat1-item__title:hover { color: var(--color-primary); }
-.cat1-item__excerpt { font-size: .78rem; color: var(--color-text-muted); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.cat1-item__excerpt { font-size: .78rem; color: var(--color-text-muted); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 5; line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* Cat 2,3,4,5,6,7 - MOBILE FIRST: image left, title right */
 .cat-mini-item {
@@ -702,7 +702,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
 .single-article { background: var(--color-bg-white); padding: .75rem; box-shadow: var(--shadow); }
 @media (min-width: 768px) {
   .single-article {
-    padding: 0 1.5rem;
+    padding: 1.5rem;
   }
 }
 .single-article__cat { margin-bottom: .75rem; }

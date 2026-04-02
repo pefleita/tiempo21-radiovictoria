@@ -220,6 +220,9 @@ function t21_customize_register( $wp_customize ) {
         ] );
         $wp_customize->add_setting( 't21_cat_slug_' . $n,    [ 'default' => '', 'sanitize_callback' => 'sanitize_text_field' ] );
         $wp_customize->add_setting( 't21_cat_count_' . $n, [ 'default' => $cfg['count'], 'sanitize_callback' => 'absint' ] );
+        $wp_customize->add_setting( 't21_cat_show_image_' . $n, [ 'default' => true, 'sanitize_callback' => 't21_sanitize_checkbox' ] );
+        $wp_customize->add_setting( 't21_cat_show_date_' . $n, [ 'default' => true, 'sanitize_callback' => 't21_sanitize_checkbox' ] );
+        $wp_customize->add_setting( 't21_cat_first_featured_' . $n, [ 'default' => true, 'sanitize_callback' => 't21_sanitize_checkbox' ] );
         $wp_customize->add_control( 't21_cat_slug_' . $n, [
             'label'   => __( 'Categoria', 'tiempo21-radiovictoria' ),
             'section' => 't21_cat_' . $n,
@@ -231,7 +234,36 @@ function t21_customize_register( $wp_customize ) {
             'section' => 't21_cat_' . $n,
             'type'    => 'number',
         ] );
+        $wp_customize->add_control( 't21_cat_show_image_' . $n, [
+            'label'   => __( 'Mostrar imagen', 'tiempo21-radiovictoria' ),
+            'section' => 't21_cat_' . $n,
+            'type'    => 'checkbox',
+        ] );
+        $wp_customize->add_control( 't21_cat_show_date_' . $n, [
+            'label'   => __( 'Mostrar fecha', 'tiempo21-radiovictoria' ),
+            'section' => 't21_cat_' . $n,
+            'type'    => 'checkbox',
+        ] );
+        $wp_customize->add_control( 't21_cat_first_featured_' . $n, [
+            'label'   => __( 'Primera noticia con imagen grande', 'tiempo21-radiovictoria' ),
+            'section' => 't21_cat_' . $n,
+            'type'    => 'checkbox',
+        ] );
     }
+
+    // Categoría 1 opciones adicionales de excerpt
+    $wp_customize->add_setting( 't21_cat1_show_excerpt', [ 'default' => true, 'sanitize_callback' => 't21_sanitize_checkbox' ] );
+    $wp_customize->add_setting( 't21_cat1_excerpt_length', [ 'default' => 50, 'sanitize_callback' => 'absint' ] );
+    $wp_customize->add_control( 't21_cat1_show_excerpt', [
+        'label'   => __( 'Categoria 1: Mostrar excerpt', 'tiempo21-radiovictoria' ),
+        'section' => 't21_cat_1',
+        'type'    => 'checkbox',
+    ] );
+    $wp_customize->add_control( 't21_cat1_excerpt_length', [
+        'label'   => __( 'Categoria 1: Palabras del excerpt', 'tiempo21-radiovictoria' ),
+        'section' => 't21_cat_1',
+        'type'    => 'number',
+    ] );
 
     // Latest & Most Read counts
     $wp_customize->add_section( 't21_hero_counts', [
@@ -240,8 +272,17 @@ function t21_customize_register( $wp_customize ) {
     ] );
     $wp_customize->add_setting( 't21_latest_count',  [ 'default' => 5, 'sanitize_callback' => 'absint' ] );
     $wp_customize->add_setting( 't21_popular_count', [ 'default' => 5, 'sanitize_callback' => 'absint' ] );
+    $wp_customize->add_setting( 't21_latest_show_image', [
+        'default'           => true,
+        'sanitize_callback' => 't21_sanitize_checkbox',
+    ] );
     $wp_customize->add_control( 't21_latest_count',  [ 'label' => 'Cantidad Ultimas Noticias',  'section' => 't21_hero_counts', 'type' => 'number' ] );
     $wp_customize->add_control( 't21_popular_count', [ 'label' => 'Cantidad Mas Leidas',        'section' => 't21_hero_counts', 'type' => 'number' ] );
+    $wp_customize->add_control( 't21_latest_show_image', [
+        'label'   => __( 'Mostrar imagen en Ultimas Noticias', 'tiempo21-radiovictoria' ),
+        'section' => 't21_hero_counts',
+        'type'    => 'checkbox',
+    ] );
 
     $wp_customize->add_setting( 't21_photo_cat', [ 'default' => 'fotorreportajes', 'sanitize_callback' => 'sanitize_text_field' ] );
     $wp_customize->add_control( 't21_photo_cat', [
@@ -566,7 +607,13 @@ function t21_count_visit() {
     
     t21_increment_view_count( $post_id );
     
-    setcookie( $cookie_name, '1', time() + 3600, '/', '', false, true );
+    setcookie( $cookie_name, '1', [
+        'expires'  => time() + 3600,
+        'path'     => '/',
+        'secure'   => false,
+        'httponly' => true,
+        'samesite' => 'Strict',
+    ] );
 }
 add_action( 'wp', 't21_count_visit' );
 

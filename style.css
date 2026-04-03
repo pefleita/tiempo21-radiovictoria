@@ -798,7 +798,8 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
 /* =========================================
    SIDEBAR
    ========================================= */
-.sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; bottom: 20px; }
+.sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+@media(min-width: 768px) { .sidebar { position: sticky; bottom: 20px; } }
 .widget { background: var(--color-bg-white); overflow: hidden; box-shadow: var(--shadow); }
 .widget-title {
   font-size: .95rem;

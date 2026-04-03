@@ -59,12 +59,26 @@ function t21_enqueue_scripts() {
 add_action( 'wp_enqueue_scripts', 't21_enqueue_scripts' );
 
 function t21_remove_image_dimensions( $content ) {
-    $content = preg_replace( '/\s*width="[^"]*"/', '', $content );
-    $content = preg_replace( '/\s*height="[^"]*"/', '', $content );
-    $content = preg_replace( '/(<figure[^>]*)\s*style="[^"]*width:\s*\d+px[^"]*"([^>]*)>/', '$1$2>', $content );
+    $content = preg_replace( '/<img([^>]*)\s+width="[^"]*"([^>]*)>/i', '<img$1$2>', $content );
+    $content = preg_replace( '/<img([^>]*)\s+height="[^"]*"([^>]*)>/i', '<img$1$2>', $content );
+    $content = preg_replace( '/(<figure[^>]*)\s+style="[^"]*width:\s*\d+px[^"]*"([^>]*)>/', '$1$2>', $content );
+    $content = preg_replace( '/sizes="auto,\s*/i', 'sizes="', $content );
     return $content;
 }
 add_filter( 'the_content', 't21_remove_image_dimensions', 20 );
+
+function t21_fix_iframe_display( $content ) {
+    if ( false === strpos( $content, '<iframe' ) ) {
+        return $content;
+    }
+
+    $content = preg_replace( '/<iframe\s+([^>]*)\/>/', '<iframe $1></iframe>', $content );
+    $content = preg_replace( '/<p>\s*(\<iframe[^>]*\>.*?\<\/iframe\>)\s*<\/p>/s', '$1', $content );
+    $content = preg_replace( '/<p>\s*(\<iframe[^>]*\/>)\s*<\/p>/s', '$1', $content );
+
+    return $content;
+}
+add_filter( 'the_content', 't21_fix_iframe_display', 30 );
 
 function t21_add_defer_to_scripts( $tag, $handle ) {
     if ( 'tiempo21-js' === $handle ) {

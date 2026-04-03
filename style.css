@@ -178,7 +178,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
 }
 
 @media(min-width: 768px) {
-  .with-sidebar { grid-template-columns: 1fr 300px; }
+  .with-sidebar { grid-template-columns: 1fr 300px; align-items: end; }
 }
 
 @media(min-width: 992px) {
@@ -609,10 +609,6 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
     flex: 1;
     gap: .3rem;
   }
-  .cat1-item__excerpt {
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-  }
 
   /* Cat 2-7 - image top, title bottom */
   .cat-mini-item {
@@ -802,7 +798,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
 /* =========================================
    SIDEBAR
    ========================================= */
-.sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+.sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; bottom: 20px; }
 .widget { background: var(--color-bg-white); overflow: hidden; box-shadow: var(--shadow); }
 .widget-title {
   font-size: .95rem;

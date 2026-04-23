@@ -787,6 +787,17 @@ function t21_get_category_title( $n ) {
     return $cat ? $cat->name : 'Category ' . $n;
 }
 
+add_action( 'pre_get_posts', 't21_exclude_sticky_from_home' );
+
+function t21_exclude_sticky_from_home( $query ) {
+    if ( is_admin() || ! $query->is_main_query() ) {
+        return;
+    }
+    if ( $query->is_home() ) {
+        $query->set( 'ignore_sticky_posts', true );
+    }
+}
+
 /* =========================================
    INCLUDE ADDITIONAL FEATURES
     ========================================= */
